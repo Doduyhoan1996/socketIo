@@ -2,5 +2,5 @@
 setup:
 -- npm install
 run server :
--- npm node index.js
+-- node index.js
 http://localhost:3000/
