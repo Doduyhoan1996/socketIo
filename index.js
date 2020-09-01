@@ -15,6 +15,23 @@ io.on('connection', function (socket) {
     socket.on('disconnect', function(){
         console.log(socket.id + ' disconnected!');
     });
+
+    socket.on('client-send-message', function(message){
+        // emit tất cả
+        io.sockets.emit('sever-send-message', message );
+
+        // emit chính nó
+        // socket.emit('sever-send-message', message );
+
+        // emit tất cả trừ nó
+        // socket.broadcast.emit('sever-send-message', message );
+
+
+    });
+
+    socket.on('client-send-color', function(color){
+        io.sockets.emit('sever-send-color', color );
+    });
 });
 
 
