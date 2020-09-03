@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO Socket IO</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/jquery.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="form-group">
+                <div class="row">
+                    <h2>Demo chat realtime NodeJS</h2>
+                    <input class="form-control" type="text" id="username" name="username" placeholder="Enter name">
+                    <div class="form-control" id="content"></div>
+                    <div class="input-group mb-3">
+                        <input class="form-control" id="message" placeholder="Write something...">
+                        <div class="input-group-append">
+                            <span class="btn btn-primary" id="sendMessage">SEND</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="test">
+            <button type="button" class="btn btn-success change-color">Success</button>
+            <button type="button" class="btn btn-danger change-color">Danger</button>
+            <button type="button" class="btn btn-warning change-color">Warning</button>
+        </div>
+    </div>
+    
+</body>
+</html>

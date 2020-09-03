@@ -12,3 +12,7 @@
 #username, #content, #message, #sendMessage {
     margin-bottom: 5px;
 }
+
+#content .message-me {
+    float: right;
+}
