@@ -1,4 +1,5 @@
 var express = require('express');
+var mysql = require('mysql'); // include thêm module mysql
 var app = express();
 app.use(express.static('public')); 
 app.set('view engine', 'ejs');
@@ -63,6 +64,30 @@ io.on('connection', function (socket) {
 });
 
 
+// Tạo kết nối với Database
+var conn = mysql.createConnection({
+    database: 'nodejs_chat_app',
+    host: "localhost",
+    user: "root",
+    password: "123456"
+});
+conn.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
+
+// Viết câu truy vấn sql
+var arrMember = [];
+var sql = 'SELECT * FROM `member`';// Thực hiện câu truy vấn và show dữ liệu
+conn.query(sql, function(error, result){
+    if (error) throw error;
+    // console.log('– USER TABLE — ' , result);
+    result.map(function(row) {
+        arrMember.push(row);
+    });
+});
+
 app.get('/', function(req, res){
+    // render Home
     res.render('home');
 })
