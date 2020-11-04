@@ -42,15 +42,18 @@ io.on('connection', function (socket) {
     });
 
     socket.on('create-room', function(data){
-        socket.join(data);
-        socket.Room = data;
-
-        var ArrRoom = [];
-        for (r in socket.adapter.rooms ) {
-            ArrRoom.push(r)
+        if (data) {
+            socket.join(data);
+            socket.Room = data;
+            var ArrRoom = [];
+            for (r in socket.adapter.rooms ) {
+                ArrRoom.push(r)
+            }
+            io.sockets.emit('sever-send-room', ArrRoom);
+            socket.emit('sever-send-room-socket', data);
+        } else {
+            socket.emit('sever-send-errors', 'room name not found');
         }
-        io.sockets.emit('sever-send-room', ArrRoom);
-        socket.emit('sever-send-room-socket', data)
 
     });
 

@@ -39,9 +39,11 @@ socket.on('sever-send-room-socket', function(data) {
         if ($(this).text() == data){
             $(this).parents('li:first').addClass('active');
         }
-        console.log();
     })
+});
 
+socket.on('sever-send-errors', function(data) {
+    alert(data);
 });
 
 $(document).ready(function(){
@@ -51,8 +53,12 @@ $(document).ready(function(){
     });
 
     $('.create_room').click(function(){
-        socket.emit('create-room', $('#create_name_room').val() );
-        $('#create_name_room').val('')
+        var room_name = $('#create_name_room').val();
+        if (room_name) {
+            socket.emit('create-room', room_name );
+            $('#create_name_room').val('');
+        }
+        
     });
 
     $('#sendMessage').click(function(){
